@@ -1,0 +1,26 @@
+buildscript {
+	repositories {
+		jcenter()	
+	}
+	dependencies {
+		classpath : 'org.akhikhl.gretty:gretty:+'
+	}
+}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'war'
+apply plugin: 'org.akhikhl.gretty'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	jcenter()
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+dependencies {
+	compile 'org.slf4j:slf4j-api:1.7.7'
+}
