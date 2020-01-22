@@ -2,16 +2,18 @@ buildscript {
 	repositories {
 		jcenter()	
 	}
+	/*
 	dependencies {
 		classpath 'org.akhikhl.gretty:gretty:+'
 	}
+	*/
 }
 
 apply plugin: 'java'
 apply plugin: 'war'
-
+/*
 apply plugin: 'org.akhikhl.gretty'
-
+*/
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
@@ -32,12 +34,13 @@ dependencies {
 }
 
 // gretty는 내장 서블릿 컨테이너 jetty로 톰캣을 로컬에 별도로 설치하지 않고 결과를 확인하기 위해 사용
+/*
 gretty{
     httpPort = 8080
     contextPath = '/'
     servletContainer = 'jetty9'
 }
-
+*/
 def webappDir = "$rootDir/src/main/webapp"
 
 eclipse{
