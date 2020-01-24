@@ -61,5 +61,12 @@ public class InitServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		super.destroy();
+		logger.log(Level.INFO, "Servlet Destory");
+		System.out.println("서블릿 종료");
+	}
 }
