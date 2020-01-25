@@ -75,6 +75,8 @@ public class UploadServlet extends HttpServlet {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			writer.close();
 		}
 	
 	}
