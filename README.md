@@ -12,3 +12,11 @@ C:\Users\사용자\로그인\.m2\repository\org\apache\maven\plugins\maven-resou
 ```
 경로의 2.6 폴더 **삭제**
 
+
+
+## Servlet
+
+### Multipart : getPart()로 데이터 전송 (Client에서 Server로 업로드)
+
+### Filter : implements Filter의 doFilter로 servlet보다 먼저 작동
+
