@@ -20,3 +20,5 @@ C:\Users\사용자\로그인\.m2\repository\org\apache\maven\plugins\maven-resou
 
 ### Filter : implements Filter의 doFilter로 servlet보다 먼저 작동
 
+### Cookie : HTTP 헤더 정보에 포함되며 상태 정보를 저장할 공간
+
