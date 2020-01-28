@@ -2,6 +2,7 @@ package main.java.info.thecodinglive.cookie;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,11 +33,11 @@ public class CookieCreateServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		writer.println("<html>");
 		writer.println("<head>");
-		writer.println("<title>쿠키 예제</title>");
+		writer.println("<title>쿠키 생성</title>");
 		writer.println("</head>");
 		writer.println("<body>");
 		
@@ -46,7 +47,7 @@ public class CookieCreateServlet extends HttpServlet {
 		response.addCookie(jcookie);
 		// 특정 사이트에서만 사용 가능한 쿠키를 만들 시 도메인을 지정
 		// new Cookie(name, value).setDomain("도메인");
-		writer.println("<a href='/readcookie'>쿠키 읽기</a>");
+		writer.println("<a href='./readcookie'>쿠키 읽어보기</a>");
 		writer.println("</body>");
 		writer.println("</html>");
 	}
