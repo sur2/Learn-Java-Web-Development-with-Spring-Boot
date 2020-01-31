@@ -23,5 +23,11 @@ C:\Users\사용자\로그인\.m2\repository\org\apache\maven\plugins\maven-resou
 ### Cookie : HTTP 헤더 정보에 포함되며 상태 정보를 저장할 공간
 
 - 쿠키에 한글로 String 값 넣을 시 URLEncoder.encode URLDecoder.decode 할 것
-
 - 쿠키의 삭제는 유효시간을 '0'으로 만들어서 무효화 할 것
+
+### Session : 서버와 클라이언트의 유효한 커넥션을 식별(ID)
+
+- 세션 초기화 request.getSession()
+- 세션 만들기 Session.setAttribute(name, value);
+- 세션 조회 Session.getAttribute(name);
+- 세션 삭제(모든 세션 삭제) Session.invalidate();
