@@ -64,4 +64,10 @@ C:\Users\사용자\로그인\.m2\repository\org\apache\maven\plugins\maven-resou
     }
     ```
 
-- 커맨드 패턴 : 명령(로직)을 객체 안에 캡슐화해서 컨트롤러와 같은 클래스를 수정하지 않고 개사용할 수 있게 하는 패턴
+- 커맨드 패턴 : 명령(로직)을 객체 안에 캡슐화해서 컨트롤러와 같은 클래스를 수정하지 않고 재사용할 수 있게 하는 패턴
+
+  ```
+  Front Controller(Servlet.java) → Commnad.class (:상속)→ HomeView.java → home.jsp
+  ```
+
+  

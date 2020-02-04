@@ -16,10 +16,15 @@ public abstract class Command {
 	
 	abstract public void execute();
 	
+	public Command() {
+		// TODO Auto-generated constructor stub
+		System.out.println("초기화");
+	}
+	
 	public void forward(String url) {
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		try {
-			rd.forward(request, response);
+			rd.forward(getRequest(), getResponse());
 		} catch (ServletException e) {
 			e.printStackTrace();
 			servletContext.log("forward Error", e);
