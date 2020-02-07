@@ -76,6 +76,9 @@ C:\Users\사용자\로그인\.m2\repository\org\apache\maven\plugins\maven-resou
 
 ### 빈 + 컨테이너 : 스프링은 객체 관리를 해주는 빈 컨테이너 프레임워크
 
+- 스프링 XML 설정 : applicationContext.xml
+- 어노테이션
+
 ### 제어의 역전(Inversion of Control)
 
 - 의존 관계 역전 원칙(Dependency Inversion Principle) : 인터페이스를 활용하여 결합도를 낮추자!
