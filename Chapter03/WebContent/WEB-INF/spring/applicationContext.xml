@@ -13,22 +13,5 @@
 	</bean>
 	
 	<bean class="com.pyong.web.controller.IndexController" id="indexController"></bean>
-
-	<bean id="boss" class="basic.Boss"></bean>
-	<bean id="employee" class="basic.Employee"></bean>
-		
-	<bean id="myWorkService" class="basic.WorkService">
-		<property name="workManager">
-			<ref bean="boss"/>
-		</property>
-	</bean>
-	
-	<bean id="yourWorkService" class="basic.WorkService">
-		<!-- 다른 클래스 또는 인터페이스를 멤버 변수로 가지고 있는 경우 property 태그를 사욯해 명시 -->
-		<property name="workManager">
-			<!-- 구현 타입이 구체화되지 않은 인터페이스인 경우에는 ref 태그롤 구현체 클레스를 명시 -->
-			<ref bean="employee"/>
-		</property>
-	</bean>
 	
 </beans>
