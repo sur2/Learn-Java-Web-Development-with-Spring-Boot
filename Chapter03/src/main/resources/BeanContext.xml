@@ -3,8 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="boss" class="basic.Boss"></bean>
-	<bean id="employee" class="basic.Employee"></bean>
+	<!-- init-method로 빈 초기화시 호출될 메서드 등록 -->
+	<bean id="boss" class="basic.Boss" init-method="onCreated" destroy-method="onDestoryed"></bean>
+	<!-- destory-method로 빈 소멸시 호출될 메서드 등록 -->
+	<!-- 빈 생성 - doIt 메서드 실행 - 소멸  순으로 생명주기를 제어할 수 있다. -->
+	<bean id="employee" class="basic.Employee" init-method="onCreated" destroy-method="onDestoryed"></bean>
 
 	<bean id="myWorkService" class="basic.WorkService">
 		<property name="workManager">
