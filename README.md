@@ -92,5 +92,8 @@ C:\Users\사용자\로그인\.m2\repository\org\apache\maven\plugins\maven-resou
 Front Controller 패턴에 Spring의 의존성 주입(DI)을 이용해서 컴포넌트들의 생명주기를 관리할 수 있는 컨트롤러 중심의 웹 Model View Control 프레임워크
 
 - 스프링 MVC 구조 : DispatcherServlet, Handler Mapping, Handler, Intercepter, View Resolver, View
-   
+  ![](C:\Users\Owner\Desktop\springmvc.jpg)
 - 스프링 MVC 설정 : spring core(context), spring mvc, spring web(webmvc)
+- DispatcherServlet 설정
+  - web.xml
+  - javaConfig (단, Servlet 3.0이상)
