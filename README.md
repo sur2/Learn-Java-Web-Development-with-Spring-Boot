@@ -3,8 +3,8 @@
 
  
 
-## Multiple problems have occurred 
-
+## [issue] 
+### Multiple problems have occurred 
 ### 'Could not calculate build plan: Plugin' 해결법 
 
 ```
@@ -98,3 +98,43 @@ Front Controller 패턴에 Spring의 의존성 주입(DI)을 이용해서 컴포
   - web.xml
   - javaConfig (단, Servlet 3.0이상)
 - Interceptor : 컨트롤러가 요청하기 전(pre), 후(post) 처리
+
+
+
+##  스프링 부트
+
+스프링 부트는 WAR가 아닌 JAR 형태로 동작하기 때문에 main 메서드를 이용해서 실행한다.
+main 메서드가 실행되면 내장된 웹 애플리케이션 서버(WAS)가 실행되어 웹을 통해 접근할 수 다.
+
+- 스프링 부트에서 웹 자원들을 실행하기 위한 규약
+
+  | 웹 자원                        | 경로                                                         |
+  | ------------------------------ | ------------------------------------------------------------ |
+  | 정적 HTML 파일                 | src/main/resources/static<br />src/main/public               |
+  | 웹 페이지 대표 아이콘(Favicon) | src/main/resources/favicon.ico                               |
+  | 템플릿                         | src/main/resources/templates<br />html - Thymeleaf<br />tpl - Groovy<br />ftl - Freemaker<br />vm - velocity |
+
+
+### 정적 자원 관리
+
+WebMvcAutoConfiguration 클래스는 기본 설정으로 웹 리소스 폴더에서 자원을 찾는다.
+기본 경로 : src/main/resources/static
+
+웹 리소스 폴더 선정
+
+- assets 폴더 추가 : WebMvcConfigurer 인터페이스를 구현하여 addResourceHandlers 메서드를 오버라이딩
+
+  ```
+  @Configuration
+  public class WebConfig implements WebMvcConfigurer{
+  	@Override
+  	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+  		WebMvcConfigurer.super.addResourceHandlers(registry);
+  		// '/**' : 0개 이상의 디렉터리와 매칭 ↔ '/*' : 0개 이상의 파일과 매칭
+  		registry.addResourceHandler("/assets/**").addResourceLocations("classpath:/assets/", "/assets/");
+  	}
+  }
+  ```
+
+  addResourceHandler는 호출 경로로 사용될 URI 값 지정, addResourceLocations는 실제로 파일이 위치할 폴더 경로
+
