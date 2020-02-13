@@ -138,3 +138,29 @@ WebMvcAutoConfiguration 클래스는 기본 설정으로 웹 리소스 폴더에
 
   addResourceHandler는 호출 경로로 사용될 URI 값 지정, addResourceLocations는 실제로 파일이 위치할 폴더 경로
 
+- Resource 주소에 MD5 값 설정
+  스프링에서 제공하는 콘텐츠 버전 정책을 사용하면  URL 주소에 Hash값이 추가되고 캐시 주기도 별도로 설정할 수 있다. 
+  addResourceHandlers 메서드에 캐시 관련 내용을 추가한다.
+
+  ```
+  @Override
+  	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+  		WebMvcConfigurer.super.addResourceHandlers(registry);
+  		// '/**' : 0개 이상의 디렉터리와 매칭 ↔ '/*' : 0개 이상의 파일과 매칭
+  		registry.addResourceHandler("/assets/**")
+  		.addResourceLocations("classpath:/assets/", "/assets/")
+  		.setCachePeriod(60*60*24*365) // 캐시 기간 1년
+  		.resourceChain(true)
+  		// VersionResourceResolver().addContentVersionStrategy는 웹 리소스 파일 로드 시 해쉬 적용
+  		.addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"));
+  	}
+  ```
+
+  versionResourceResolver를 통해 웹 리소스 파일을 호출하기 위해 ResourceUrlProvider를 이용하는 것이 좋다. 이는 설정한 resolver에 맞게 로드 할 수 있다.
+
+  ```
+  
+  ```
+
+  
+
