@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
 <link rel="stylesheet"
 	th:href="${versionResourceResolver.getForLookupPath('/assets/style.css')}" />
 <title>thymeleaf</title>
@@ -9,6 +8,7 @@
 	th:href="${versionResourceResolver.getForLookupPath('/assets/css/style.css')}" />
 </head>
 <body>
-<p th:text="${message}"></p>
+	<p th:text="${message}"></p>
+
 </body>
 </html>
