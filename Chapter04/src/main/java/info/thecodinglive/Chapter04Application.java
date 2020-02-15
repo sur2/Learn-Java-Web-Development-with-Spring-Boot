@@ -2,11 +2,9 @@ package info.thecodinglive;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ApplicationContext;
 //import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-
 
 /**
  * SpringBootApplication Annotation이  ComponentScan, Configuration, EnableAutoConfiguration Annotation을 대체
@@ -19,6 +17,6 @@ import org.springframework.context.annotation.Configuration;
 public class Chapter04Application {
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(Chapter04Application.class, args);
+		SpringApplication.run(Chapter04Application.class, args);
 	}
 }
