@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>webjar</title>
+<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" />
+<script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+<style>
+div {
+	background-color: #bca;
+	width: 100px;
+	border: 1px solid green;
+}
+</style>
+</head>
+<body>
+	<h1>Test</h1>
+	<div id="block">jquery</div>
+	<button type="button" class="btn btn-primary" onclick="isClick()">effect</button>
+
+	<script type="text/javascript">
+		function btnHandler() {
+			$('#block').animate({
+				width : "70%",
+				opactiy : 0.4,
+				marginLeft : "0.6in",
+				fontSize : "3em",
+				borderWidth : "10px"
+			}, "15");
+		}
+		function btnReset() {
+			$('#block').animate({
+				width : "10%",
+				opactiy : 0.1,
+				marginLeft : "0.1in",
+				fontSize : "1em",
+				borderWidth : "1px"
+			}, "10");
+		}
+		var check = false;
+		function isClick() {
+			console.log('체크확인 ', check);
+			if (check) {
+				btnReset();
+				console.log('리셋 누름 ', check);
+				check = false;
+			} else {
+				btnHandler();
+				console.log('효과 누름 ', check);
+				check = true;
+			}
+		}
+	</script>
+</body>
+</html>

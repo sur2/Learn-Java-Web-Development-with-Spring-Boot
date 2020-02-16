@@ -159,8 +159,26 @@ WebMvcAutoConfiguration 클래스는 기본 설정으로 웹 리소스 폴더에
   versionResourceResolver를 통해 웹 리소스 파일을 호출하기 위해 ResourceUrlProvider를 이용하는 것이 좋다. 이는 설정한 resolver에 맞게 로드 할 수 있다.
 
   ```
-  
+  @ControllerAdvice
+  public class ResourceAdvice {
+	@Autowired
+  	private ResourceUrlProvider resourceUrlProvider;
+  	
+  	@ModelAttribute("versionResourceResolver")
+  	public ResourceUrlProvider versionResourceResolver() {
+  		return this.resourceUrlProvider;
+  	}
+  }
   ```
-
   
+### WebJars
+pom.xml에 webJAR로 사용할 수 있는 라이브러리들(https://www.webjars.org)을 사용할 수 있도록 의존성을 추가할 수 있다.
+
+### Interceptor with Spring boot
+
+Spring framework에서는 ExcuteTimeInterceptor XML을 사용했지만 Spring boot에서는 그러지 않아도 적용할 수 있다.
+
+- WebMvcConfigurer 인터페이스를 구현하여  HandlerInterceptorAdapter Bean을 등록하고 addInterceptors() 메서드를 구현한다.
+- addPathPatterns("/**") :  경로 지정
+- excludePathPatterns("/") :예외 페이지 지정
 
