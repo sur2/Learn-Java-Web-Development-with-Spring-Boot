@@ -1,7 +1,7 @@
 package info.thecodinglive.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.hateoas.ResourceSupport;
 
-public class TodoResource extends org.springframework.hateoas.Link{
+public class TodoResource extends ResourceSupport{
 
 }

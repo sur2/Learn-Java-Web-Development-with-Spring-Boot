@@ -214,5 +214,6 @@ Resource는 REST의 핵심 개념으로 접근할 수 있고 조작할 수 있�
   - POST :  생성 (응답을 보장하지 않음)
   - PUT : 업데이트 요청
 - ResponseEntity : 응답 헤더는 ResponseEntity를 사용해 상태값을 전달할 수 있으며 HttpHeaders를 사용하면 헤더를 구현할 수 있다.
-- HATEOAS, Hypermedia As The Engine Of Application State
+  - HATEOAS, Hypermedia As The Engine Of Application State
+    ``org.springframework.hateoas.ResourceSupport``
   - HATEOAS를 이용한 URI정보 표현
