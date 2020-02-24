@@ -216,4 +216,7 @@ Resource는 REST의 핵심 개념으로 접근할 수 있고 조작할 수 있�
 - ResponseEntity : 응답 헤더는 ResponseEntity를 사용해 상태값을 전달할 수 있으며 HttpHeaders를 사용하면 헤더를 구현할 수 있다.
   - HATEOAS, Hypermedia As The Engine Of Application State
     ``org.springframework.hateoas.ResourceSupport``
+    
   - HATEOAS를 이용한 URI정보 표현
+  
+    linkTo() 메소드는 컨트롤러나, 핸들러 메소드로부터 URI 정보 읽어올 때 쓰는 메소드이다. 스프링 HATEOAS 프로젝트에서 제공
