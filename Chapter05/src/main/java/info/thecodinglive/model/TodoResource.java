@@ -1,10 +1,10 @@
 package info.thecodinglive.model;
 
-import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.RepresentationModel;
 /***
  * HATEOAS를 이용한 URI 정보 표현
  */
-public class TodoResource extends EntityModel<TodoResource> {
+public class TodoResource extends RepresentationModel<TodoResource> {
 
 	private String title;
 

@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.ControllerLinkBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.thecodinglive.model.Todo;
@@ -66,7 +65,8 @@ public class BasicController {
 	@RequestMapping(value = "/todoh", method = RequestMethod.GET)
 	public ResponseEntity<TodoResource> geth(@RequestParam(value = "todoTitle") String todoTitle) {
 		TodoResource todoResource = new TodoResource(todoTitle);
-		todoResource.add(linkTo(methodOn(BasicController.class).geth(todoTitle)).withSelfRel());
+		Link link = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(BasicController.class).geth(todoTitle)).withSelfRel();
+		todoResource.add(link);
 		return new ResponseEntity<TodoResource>(todoResource, HttpStatus.OK);
 	}
 
