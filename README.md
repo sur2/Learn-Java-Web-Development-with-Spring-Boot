@@ -203,7 +203,6 @@ Spring framework에서는 ExcuteTimeInterceptor XML을 사용했지만 Spring bo
     데이터  + 링크 정보
 
 ### 리소스
-
 Resource는 REST의 핵심 개념으로 접근할 수 있고 조작할 수 있는 모든 것. 
 이미지, 비디오 등 명사화 할 수 있는 대부분의 것.
 
@@ -216,8 +215,15 @@ Resource는 REST의 핵심 개념으로 접근할 수 있고 조작할 수 있�
 - ResponseEntity : 응답 헤더는 ResponseEntity를 사용해 상태값을 전달할 수 있으며 HttpHeaders를 사용하면 헤더를 구현할 수 있다.
   - HATEOAS, Hypermedia As The Engine Of Application 
     ResourceSupport 는 RepresentationModel으로 변경되었음!
-    https://docs.spring.io/spring-hateoas/docs/1.0.1.RELEASE/reference/html/
-    
+    https://docs.spring.io/spring-hateoas/docs/1.0.1.RELEASE/reference/html/    
   - HATEOAS를 이용한 URI정보 표현
+    ControllerLinkBuilder.linkTo와 ControllerLinkBuilder.methodOn를 이용하여 메서드를 매핑한다. (해당 메서드의 URL 반환)
+- REST API 문서화 
   
-    ControllerLinkBuilder.linkTo와 ControllerLinkBuilder.methodOn를 이용하여 메서드를 매핑한다.
+  - swagger : API 정보를 문서화 (왜 HATEOAS랑 의존성 같이 넣으면 Bena을 못 찾아?) 
+  
+    http://localhost:9090/swagger-ui.html#/
+  
+    - Selectors.any()는 전체 문서화 
+  
+  - REST 클라이언트 : RestTemplate 라이브러리를 사용해서 JSON 응답을 Map 또는 모델 클래스로 변환해서 사용 가능

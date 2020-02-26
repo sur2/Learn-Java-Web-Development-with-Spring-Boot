@@ -1,6 +1,6 @@
 package info.thecodinglive.model;
 
-import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.RepresentationModel;;
 /***
  * HATEOAS를 이용한 URI 정보 표현
  */

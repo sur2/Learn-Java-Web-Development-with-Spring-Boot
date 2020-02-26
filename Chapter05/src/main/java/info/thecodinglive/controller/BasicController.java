@@ -61,7 +61,8 @@ public class BasicController {
 		
 		return todoMap.get(todoId);
 	}
-	
+//	swagger랑 bean 충돌...?
+/* 
 	@RequestMapping(value = "/todoh", method = RequestMethod.GET)
 	public ResponseEntity<TodoResource> geth(@RequestParam(value = "todoTitle") String todoTitle) {
 		TodoResource todoResource = new TodoResource(todoTitle);
@@ -69,5 +70,6 @@ public class BasicController {
 		todoResource.add(link);
 		return new ResponseEntity<TodoResource>(todoResource, HttpStatus.OK);
 	}
+*/	
 
 }
