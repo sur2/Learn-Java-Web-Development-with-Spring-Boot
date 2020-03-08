@@ -290,7 +290,9 @@ Repository 인터페이스: JpaRepository 인터페이스를 상속받아 Entity
    Q클래스 초기화 - JPQLQuery 객체 초기화 : 쿼리 표현식 메서드 사용가능
    (Interface @Repository)Repository, (Interface)RepositoryCustom, (Class)RepositoryImpl(구현체)는 네이밍을 지켜야하며 같은 위치에 있어어야 한다.
 
+### 쿼리 매퍼
 
+#### Mybatis : 쿼리 매퍼를 사용하여 SQL Query 실행
 
-
+ Mybatis 설정 클래스를 만들어 sqlSession 객체를 사용한다. sqlSession 객체를 생성하기 위해서 SqlSessionFactory를 사용한다. 스프링을 같이 사용할 때는 SqlSessionTemplate을 쓴다. 그 이유는 sqlSession을 대체할 수 있고, 예외 처리를 Mybatis가  아니라 Spring에 DataAcessException으로 치환시키는 역할을 해주기 때문이다.
 
