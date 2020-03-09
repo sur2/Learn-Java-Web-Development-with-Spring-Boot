@@ -1,7 +1,5 @@
 package info.thecodinglive.config;
 
-import java.io.IOException;
-
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,33 +17,33 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 @Configuration
 @MapperScan(basePackages = { "info.thecodinglive.repository" })
 public class MyBatisConfig {
-	
+
 	/**
-	 * 생성된  SqlSessionFactory Bean 주입
+	 * 생성된 SqlSessionFactory Bean 주입
 	 */
 	@Bean
 	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}
-	
+
 	/**
-	 * Mybatis-config.xml 파일에 대한 설정 없이도 동작한다.
-	 * 다만 Mybatis 관련 설정 파일이 없다는 메시지가 출력된다. 세밀한 설정 제어가 필요한 경우 사용하면 된다. 
+	 * Mybatis-config.xml 파일에 대한 설정 없이도 동작한다. 다만 Mybatis 관련 설정 파일이 없다는 메시지가 출력된다.
+	 * 세밀한 설정 제어가 필요한 경우 사용하면 된다.
+	 * @throws Exception 
 	 */
 	@Bean
-	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) {
+	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource);
 		// SQL Mapper 파일을 여러개 참조 : PathMatchingResourcePatternResolver()
 		// 단일 파일 참조 : getResource()
-		sqlSessionFactoryBean.setConfigLocation((new PathMatchingResourcePatternResolver().getResource("classpath:mybatis-config.xml")));
-		try {
-			sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:sample/mapper/*.xml"));
-			return sqlSessionFactoryBean.getObject();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+		/*		
+		sqlSessionFactoryBean.setConfigLocation(
+				(new PathMatchingResourcePatternResolver().getResource("classpath:mybatis-config.xml")));
+		*/
+		sqlSessionFactoryBean.setMapperLocations(
+				new PathMatchingResourcePatternResolver().getResources("classpath:sample/mapper/*.xml"));
+		return sqlSessionFactoryBean.getObject();
 	}
 
 }
