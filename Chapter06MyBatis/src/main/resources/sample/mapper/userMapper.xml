@@ -13,7 +13,13 @@
 	
 	<insert id="addUserInfo">
 		insert into tbl_user(id, username, password)
-		value(#{id}, #{username}, #{password})
+		values(#{id}, #{userName}, #{passWord})
 	</insert>
+	
+	<select id="findByUserNameLike" parameterType="map" resultType="hashmap">
+		SELECT id, username, password 
+		FROM tbl_user
+		WHERE USERNAME LIKE '%${userName}%'
+	</select>
 </mapper>
 	
