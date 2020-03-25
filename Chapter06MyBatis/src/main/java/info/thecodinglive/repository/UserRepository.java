@@ -27,10 +27,16 @@ public class UserRepository {
 		return result;
 	}
 	
-	public List findByUserName(String userName) {
+	public List findByUserNameLike(String userName) {
 		// KEY, VALUE
 		Map<String, Object> params = new HashMap();
 		params.put("userName", userName);
 		return sqlSessionTemplate.selectList(MAPPER_NAME_SPACE + "findByUserNameLike", params);
+	}
+	
+	public UserVO findByUserName(String userName) {
+		Map<String, Object> params = new HashMap();
+		params.put("userName", userName);
+		return sqlSessionTemplate.selectOne(MAPPER_NAME_SPACE + "findByUserName", params);
 	}
 }

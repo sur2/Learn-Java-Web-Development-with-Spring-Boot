@@ -25,6 +25,10 @@ public class MybatisMain implements CommandLineRunner {
 		System.out.println("==입력 후==");
 		System.out.println(userRepository.getUserInfoAll().toString());
 		System.out.println("==like 이름 검색==");
-		System.out.println(userRepository.findByUserName("ki").toString());
+		System.out.println(userRepository.findByUserNameLike("k").toString());
+		System.out.println("");
+		System.out.println("단건 검색");
+		UserVO one = userRepository.findByUserName("mak");
+		System.out.println(one.getId() + " :: " + one.getUserName() + " :: " + one.getPassWord());
 	}
 }
