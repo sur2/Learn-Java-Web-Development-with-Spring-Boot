@@ -298,6 +298,48 @@ Repository 인터페이스: JpaRepository 인터페이스를 상속받아 Entity
 Mapper.xml 예시
 
 ```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!-- 네임스페이스는 매퍼가 저장된 패키지명과 파일명으로 지정 -->	
+<mapper namespace="sample.mapper.userMapper">
+	<select id="selectUserInfoAll" resultType="hashmap">
+	 <![CDATA[
+	  SELECT id, username, password
+	  FROM tbl_user
+	 ]]>
+	</select>
+	
+	<insert id="addUserInfo">
+		insert into tbl_user(id, username, password)
+		values(#{id}, #{userName}, #{passWord})
+	</insert>
+	
+	<select id="findByUserNameLike" parameterType="map" resultType="hashmap">
+		SELECT id, username, password 
+		FROM tbl_user
+		WHERE USERNAME LIKE '%${userName}%'
+	</select>
+	
+	<!-- resultMap : 클래스 필드와 데이터베이스 필드를 매핑-->
+	<resultMap id="userResultMap" type="info.thecodinglive.model.UserVO">
+		<!-- property="클래스 필드" column="데이터베이스 필드" -->
+		<result property="id" column="id"/>
+		<result property="userName" column="username"/>
+		<result property="passWord" column="password"/>
+	</resultMap>
+	<!-- resultMap으로 반환 -->
+	<select id="findByUserName" parameterType="map" resultMap="userResultMap">
+		SELECT * FROM TBL_USER WHERE USERNAME = #{userName}
+	</select>
+</mapper>
 ```
+
+#### MyBatisConfig
+
+@Bean을 설정한다.
+
+SqlSessionTemplate - SqlSessionFactory - SqlSessionFactoryBean(DataSource)
 
