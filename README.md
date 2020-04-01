@@ -343,3 +343,35 @@ Mapper.xml 예시
 
 SqlSessionTemplate - SqlSessionFactory - SqlSessionFactoryBean(DataSource)
 
+
+
+### 데이터베이스 서버와 연동
+
+**MariaDB** 
+``C:\Users\Owner\Downloads\mariadb-10.1.20-winx64\mariadb-10.1.20-winx64\bin > mysql -u root -p --port=3307``
+
+**사용할 데이터베이스와 사용자 계정 생성 후 권한 부여 **
+``create database jpub;``
+``create user jpubdev identified by 'qwer1234';``
+``grant all privileges on jpub.* to jpubdev;``
+``flush privileges;``
+
+#### HikariCP
+
+HikariCP : 데이터베이스 커넥션 풀 라이브러리 중 하나로 성능이 뛰어나다.
+(데이터베이스를 사용하기 위한 네트워크 통신은 프로그램이 요청할 때 마다 커넥션을 생성)
+
+application.properties
+
+```
+#spring.datasource.url=jdbc:데이터베이스명://서버IP:port/데이터베이스명
+spring.datasource.url=jdbc:MariaDB://localhost:3307/jpub
+spring.datasource.driver-class-name=org.MariaDB.jdbc.MySQLDataSource
+spring.datasource.username=jpubdev
+spring.datasource.password=1234
+spring.datasource.separator=;
+```
+
+HikariCP로 생성할 Java Class 생성
+@Configuration Annotation 정의
+@PropertySource("application.properties") Annotation을 사용하여 application.properties를 @Value로 매핑
