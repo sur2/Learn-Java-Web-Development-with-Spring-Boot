@@ -20,7 +20,7 @@ public class MariaDBConnectionConfig {
 	private String dbUsername;
 	@Value("${spring.datasource.password}")
 	private String dbPassword;
-	@Value("${spring.datasource.driver-class-name}")
+	@Value("${spring.datasource.classname}")
 	private String dbClassName;
 	
 	/**
@@ -43,6 +43,7 @@ public class MariaDBConnectionConfig {
 		hikariConfig.setPoolName("jpubDBpool");
 		
 		final HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+		System.out.println("::HikariCP DataSource::");
 		return dataSource;
 	}
 	
