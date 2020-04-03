@@ -29,8 +29,8 @@ public class Chapter06MariaDbApplication implements CommandLineRunner{
 		System.out.println(userRepository.findByUserNameLike("k").toString());
 		System.out.println("");
 		System.out.println("단건 검색");
-//		UserVO one = userRepository.findByUserName("kim");
-//		System.out.println(one.getId() + " :: " + one.getUserName() + " :: " + one.getPassWord());
+		UserVO one = userRepository.findByUserName("kim");
+		System.out.println(one.getId() + " :: " + one.getUserName() + " :: " + one.getPassWord());
 	}
 
 }

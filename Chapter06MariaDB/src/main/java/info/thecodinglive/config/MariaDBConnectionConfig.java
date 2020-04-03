@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -20,8 +23,13 @@ public class MariaDBConnectionConfig {
 	private String dbUsername;
 	@Value("${spring.datasource.password}")
 	private String dbPassword;
-	@Value("${spring.datasource.classname}")
+	@Value("${spring.datasource.driver-class-name}")
 	private String dbClassName;
+
+	@Value("${spring.datasource.schema}")
+	private String dbSchema;
+	@Value("${spring.datasource.data}")
+	private String dbData;
 	
 	/**
 	 * '@Lazy'를 사용하여 다른 Bean들을 먼저 초기화 후 해당 메서드 실행
@@ -44,6 +52,14 @@ public class MariaDBConnectionConfig {
 		
 		final HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 		System.out.println("::HikariCP DataSource::");
+		
+		// SQL파일 Resource
+		Resource resourceSchema = new ClassPathResource(dbSchema);
+		Resource resourceData = new ClassPathResource(dbData);
+		// SQL Query execute
+		ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator(resourceSchema, resourceData);
+		databasePopulator.execute(dataSource);
+		
 		return dataSource;
 	}
 	
