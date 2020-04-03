@@ -10,12 +10,12 @@ import info.thecodinglive.model.UserVO;
 import info.thecodinglive.repository.UserRepository;
 
 @SpringBootApplication(exclude = WebMvcAutoConfiguration.class)
-public class Chapter06MariaDbApplication implements CommandLineRunner{
-
-	public static void main(String[] args) {
-		SpringApplication.run(Chapter06MariaDbApplication.class, args);
-	}
+public class MybatisMain implements CommandLineRunner {
 	
+	public static void main(String[] args) {
+		SpringApplication.run(MybatisMain.class, args);
+	}
+
 	@Autowired
 	UserRepository userRepository;
 	
@@ -29,8 +29,7 @@ public class Chapter06MariaDbApplication implements CommandLineRunner{
 		System.out.println(userRepository.findByUserNameLike("k").toString());
 		System.out.println("");
 		System.out.println("단건 검색");
-//		UserVO one = userRepository.findByUserName("kim");
+//		UserVO one = userRepository.findByUserName("mak");
 //		System.out.println(one.getId() + " :: " + one.getUserName() + " :: " + one.getPassWord());
 	}
-
 }
