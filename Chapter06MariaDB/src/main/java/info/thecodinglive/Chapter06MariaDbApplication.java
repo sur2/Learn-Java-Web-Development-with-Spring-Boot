@@ -21,6 +21,7 @@ public class Chapter06MariaDbApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
+		System.out.println("==========Chapter06==========");
 		UserVO userVO = new UserVO("test4", "mak", "1234");
 		userRepository.addUserInfo(userVO);
 		System.out.println("==입력 후==");

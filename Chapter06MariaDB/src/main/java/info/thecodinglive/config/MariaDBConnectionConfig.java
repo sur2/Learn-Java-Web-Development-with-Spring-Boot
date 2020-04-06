@@ -50,6 +50,16 @@ public class MariaDBConnectionConfig {
 		hikariConfig.setLeakDetectionThreshold(2000);
 		hikariConfig.setPoolName("jpubDBpool");
 		
+		// autoCommit : 커넥션을 종료하거나 pool에 반환할 때 트랜잭션 자동화 여부를 결정, 기본 값 TRUE
+		boolean isAutoCommit = true;
+		hikariConfig.setAutoCommit(isAutoCommit);
+		// readOnly : 데이터베이스 변경에 대해서 트랜잭션을 처리하지 않고 읽기만 하는 옵션, 기본 값 FALSE
+		boolean readOnly = false;
+		hikariConfig.setReadOnly(readOnly);
+		// connectionTimeout은 커넥션 얻는 데 소요되는 최대 시간(ms)이며 초과 시 오류 발생, 기본 값 3000(30초)
+		long connectionTimeoutMs = 30000;
+		hikariConfig.setConnectionTimeout(connectionTimeoutMs);
+		
 		final HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 		System.out.println("::HikariCP DataSource::");
 		

@@ -375,3 +375,61 @@ spring.datasource.separator=;
 HikariCP로 생성할 Java Class 생성
 @Configuration Annotation 정의
 @PropertySource("application.properties") Annotation을 사용하여 application.properties를 @Value로 매핑
+
+**외부 DB를 사용하여 스프링 컨테이너 실행 시 classpath의 SQL파일 Query 실행법**
+
+```
+ Resource resource = new ClassPathResource("SQLQuery.sql");
+ ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator(resource);
+ databasePopulator.execute(dataSource);
+```
+
+#### selectKey
+
+INSERT, UPDATE Query 전후 SELECT 구문을 실행해서 키가 되는 값을 매핑할 수 있게 해주는 기능 
+
+| 속성명      | 역할                                                |
+| ----------- | --------------------------------------------------- |
+| resultType  | return할 Data Type                                  |
+| Order       | selectKey 태그 안에 쿼리 실행 순서(Before \| after) |
+| keyProperty | insert 문이나 다른 문장에서 참조할 수 있는 id 값    |
+
+예시) Chapter06MariaDB/src/main/resources/sample/mapper/freeBoardMapper.xml
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sample.mapper.freeBoard">
+	<insert id="insertBoard" parameterType="info.thecodinglive.model.FreeBoardVO">
+		<selectKey resultType="String" order="BEFORE" keyProperty="boardId">
+			SELECT
+			CONCAT('FB', DATE_FORMAT(NOW(), '%y%m%d%h%i%s')) AS FBSEQ
+		</selectKey>
+		INSERT INTO FREE_BOARD
+		(BOARD_ID, UNAME, TITLE, CATEGORY, CONTENT, WDATE)
+		values(#{boardId}, #{userName}, #{title}, #{category}, #{content}, now())
+	</insert>
+</mapper>
+```
+
+#### 동적 쿼리 태그
+
+**IF 태그**
+
+````
+<selcet id="FindbyUserId">
+	SELECT * FROM USER
+	WHERE DEL_YN = 'N'
+	<if test = "userID != null">
+		AND USER_ID = #{userId}
+	</if>
+</select>
+````
+
+
+
+
+
