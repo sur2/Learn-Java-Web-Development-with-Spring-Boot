@@ -429,7 +429,26 @@ INSERT, UPDATE Query 전후 SELECT 구문을 실행해서 키가 되는 값을 �
 </select>
 ````
 
+```
+<if>
+	SELECT * FROM USER
+	WHERE DEL_YN='N'
+	AND USER_GRADE_IN("값1", "값2", "값3")
+</if>
+```
 
+**Foreach 태그**
+
+```
+<select id="foreachUserList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT ID, USERNAME, PASSWORD
+		FROM TBL_USER
+		WHERE ID IN
+		<foreach collection="user_list" item="userId" index="index" open="(" close=")" separator=",">
+			#{userId}
+		</foreach>
+	</select>
+```
 
 
 

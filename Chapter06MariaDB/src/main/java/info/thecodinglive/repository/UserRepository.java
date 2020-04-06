@@ -39,4 +39,8 @@ public class UserRepository {
 		params.put("userName", userName);
 		return sqlSessionTemplate.selectOne(MAPPER_NAME_SPACE + "findByUserName", params);
 	}
+	
+	public List findByUserForeach(Map<String, Object> paramMap) {
+		return sqlSessionTemplate.selectList(MAPPER_NAME_SPACE + "foreachUserList", paramMap);
+	}
 }
